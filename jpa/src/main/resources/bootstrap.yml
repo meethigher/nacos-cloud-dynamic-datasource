@@ -1,0 +1,30 @@
+server:
+  port: 9999
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+  application:
+    name: jpa
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+      config:
+        file-extension: yml
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+datasource:
+  config:
+    jdbcUrl: jdbc:postgresql://10.0.0.9:5432/nacos-test2
+    username: postgres
+    password: postgres
+    dialect: org.hibernate.dialect.PostgreSQL10Dialect
