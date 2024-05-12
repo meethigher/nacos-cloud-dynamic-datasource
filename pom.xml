@@ -17,6 +17,7 @@
     <modules>
         <module>jpa</module>
         <module>jdbctemplate</module>
+        <module>ftpclientpool</module>
     </modules>
 
 </project>

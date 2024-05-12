@@ -1,14 +1,8 @@
 server:
-  port: 9999
+  port: 9998
 spring:
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
   application:
-    name: jpa
+    name: ftpclientpool
   cloud:
     nacos:
       discovery:
@@ -24,3 +18,7 @@ spring:
         group: DEFAULT_GROUP
   profiles:
     active: nacos
+logging:
+  level:
+    root: info
+    top.meethigher: info
