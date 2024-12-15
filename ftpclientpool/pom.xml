@@ -53,7 +53,19 @@
         <dependency>
             <groupId>top.meethigher</groupId>
             <artifactId>ftp-client-pool</artifactId>
-            <version>1.1</version>
+            <version>1.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.11.1</version>
         </dependency>
 
     </dependencies>
