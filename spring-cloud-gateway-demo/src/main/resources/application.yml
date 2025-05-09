@@ -3,6 +3,9 @@ server:
 spring:
   cloud:
     gateway:
+      # spring-cloud-gateway：https://docs.spring.io/spring-cloud-gateway/docs/
+      # predicate 文档：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+      # filter 文档：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gatewayfilter-factories
       routes:
         - id: test
           # 用户访问http://127.0.0.1:80/data/a/b/c 实际代理地址http://127.0.0.1:8080/api/a/b/c
@@ -10,6 +13,8 @@ spring:
             - Path=/data/**
           filters:
             - StripPrefix=1
+            # 使用 (?<segment>.*) 是为了捕获路径部分，后续用 ${segment} 进行替换。
+            # 也可以不叫segment
             - RewritePath=/(?<segment>.*), /api/${segment}
           uri: http://127.0.0.1:8080
         - id: name
