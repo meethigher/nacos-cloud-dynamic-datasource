@@ -1,0 +1,21 @@
+server:
+  port: 80
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test
+          # 用户访问http://127.0.0.1:80/data/a/b/c 实际代理地址http://127.0.0.1:8080/api/a/b/c
+          predicates:
+            - Path=/data/**
+          filters:
+            - StripPrefix=1
+            - RewritePath=/(?<segment>.*), /api/${segment}
+          uri: http://127.0.0.1:8080
+        - id: name
+          # 用户访问http://127.0.0.1:80/ta/tb/tc 实际代理地址http://127.0.0.1:8080/root/ta/tb/tc
+          predicates:
+            - Path=/**
+          filters:
+            - RewritePath=/(?<segment>.*), /root/${segment}
+          uri: http://127.0.0.1:8080

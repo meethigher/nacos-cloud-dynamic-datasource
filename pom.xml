@@ -18,6 +18,7 @@
         <module>jpa</module>
         <module>jdbctemplate</module>
         <module>ftpclientpool</module>
+        <module>spring-cloud-gateway-demo</module>
     </modules>
 
 </project>

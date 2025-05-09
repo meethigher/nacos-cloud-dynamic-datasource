@@ -32,13 +32,17 @@ public class TestRunner implements CommandLineRunner {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                Optional<Student> optional = studentRepository.findById("1");
-                optional.ifPresent(student -> log.info("repository get: {}", student.getStudentName()));
-                TypedQuery<Student> query = entityManager.createQuery("SELECT u FROM Student u WHERE u.studentId = :username", Student.class);
-                query.setParameter("username", "1");
-                List<Student> resultList = query.getResultList();
-                if (!ObjectUtils.isEmpty(resultList)) {
-                    log.info("entityManager get: {}", resultList.get(0).getStudentName());
+                try {
+                    Optional<Student> optional = studentRepository.findById("1");
+                    optional.ifPresent(student -> log.info("repository get: {}", student.getStudentName()));
+                    TypedQuery<Student> query = entityManager.createQuery("SELECT u FROM Student u WHERE u.studentId = :username", Student.class);
+                    query.setParameter("username", "1");
+                    List<Student> resultList = query.getResultList();
+                    if (!ObjectUtils.isEmpty(resultList)) {
+                        log.info("entityManager get: {}", resultList.get(0).getStudentName());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         }, 10L, 5000L);
